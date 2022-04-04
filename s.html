@@ -1,37 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title></title>
-<style type="text/css">
-*{
-  margin:0;
-  padding:0
+<meta http-equiv="Content-Type” content="text/html; charset=utf-8">
+<title>时钟</title>
+<script type="text/javascript">
+var days=new  Array ("日", "一", "二", "三", "四", "五", "六");
+function showDT() {
+var currentDT = new Date();
+var yy,mm,date,day,hs,ms,ss,theDateStr;
+yy = currentDT.getFullYear(); //四位整数表示的年份
+mm = currentDT.getMonth(); //月
+date = currentDT.getDate(); //日
+day = currentDT.getDay(); //星期
+hs = currentDT.getHours(); //时
+ms = currentDT.getMinutes(); //分
+ss = currentDT.getSeconds(); //秒
+theDateStr = (hs<10? ("0"+hs) : hs) +"</br>"+(ms<10? ("0"+ms) : ms)+"</br>"+(ss<10? ("0"+ss) :ss);
+document.getElementById("theClock"). innerHTML =theDateStr;
+// setTimeout 在执行时,是在载入后延迟指定时间后,去执行一次表达式,仅执行一次
+window.setTimeout( showDT, 1000);
 }
-html,body{
-  height: 100%;
-}
-</style>
+</script>
 </head>
-<body>
-  <div align="center" style="overflow:hidden;width:99.5%;">
-    <form action="http://www.mee.gov.cn/searchnew/" method="get">
-      <input type="text" name="searchword" />
-      <input value="标准" type="submit" value="Submit" />
-    </form>
-    </br>
-    <form action="https://www.baidu.com/s" method="get">
-      <input type="text" name="wd" />
-      <input value="百度" type="submit" value="Submit" />
-    </form>
-
-    <a href="http://map.baidu.com" target="s">地图</a>&nbsp;
-    <a href="http://117.73.252.128:8093/?ticket=26f4ece6c683e8cb141e62a3fdf856ad#/company/business" target="s">监测活动</a>&nbsp;
-    <a href="https://fanyi.baidu.com/?aldtype=16047#auto/zh" target="s">翻译</a>
-  </div>
-  <!--<div style="height:50%;width:99.5%" >
-    <iframe style="height:100%;width:100%" name="s" id="ss" frameborder="0">
-    </iframe>
-  </div>-->
+<body onload="showDT()">
+<div id="theClock" style="font-weight:bold; width:100%;font-size:28vw; text-align:center;line-height:20vh"></div>
 </body>
 </html>
